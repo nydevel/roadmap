@@ -1,14 +1,26 @@
-use std::sync::Arc;
-
 use crate::connector::routes::Route;
 use actix_web::{web, App, HttpServer};
 
-pub async fn run(addr: String, route: Route) {
-    let Route { path, content, .. } = route;
+struct AppState {
+    content: String,
+}
 
-    HttpServer::new(|| App::new().service(web::resource("/").to(|| async { Arc::clone(content) })))
-        .bind(addr)
-        .unwrap()
-        .run()
-        .await;
+async fn render(data: web::Data<AppState>) -> String {
+    data.content.clone()
+}
+
+pub async fn run(addr: String, route: Route) {
+    let Route { content, .. } = route;
+    let st = web::Data::new(AppState { content });
+
+    HttpServer::new(move || {
+        App::new()
+            .app_data(st.clone())
+            .service(web::resource("/").to(render))
+    })
+    .bind(addr)
+    .unwrap()
+    .run()
+    .await
+    .unwrap();
 }
