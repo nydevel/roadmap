@@ -1,7 +1,7 @@
 use axum::{routing::get, Router};
 use std::net::SocketAddr;
 
-use crate::routes::Route;
+use crate::connector::routes::Route;
 
 pub async fn run(addr: String, route: Route) {
     let Route { path, content, .. } = route;
