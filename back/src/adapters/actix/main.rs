@@ -10,13 +10,13 @@ async fn render(data: web::Data<AppState>) -> String {
 }
 
 pub async fn run(addr: String, route: Route) {
-    let Route { content, .. } = route;
+    let Route { content, path, .. } = route;
     let st = web::Data::new(AppState { content });
 
     HttpServer::new(move || {
         App::new()
             .app_data(st.clone())
-            .service(web::resource("/").to(render))
+            .service(web::resource(&path).to(render))
     })
     .bind(addr)
     .unwrap()
