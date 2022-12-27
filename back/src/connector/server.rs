@@ -1,3 +1,3 @@
 use crate::adapters;
 
-pub use adapters::actix::run;
+pub use adapters::axum::run;

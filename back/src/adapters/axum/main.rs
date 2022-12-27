@@ -1,12 +1,16 @@
 use axum::{routing::get, Router};
 use std::net::SocketAddr;
 
-use crate::connector::routes::Route;
+use crate::connector::routes::{Route, Routes};
 
-pub async fn run(addr: String, route: Route) {
-    let Route { path, content, .. } = route;
+pub async fn run(addr: String, routes: Routes) {
+    let mut app = Router::new();
 
-    let app = Router::new().route(&path, get(|| async { content }));
+    for route in routes {
+        let Route { path, content, .. } = route;
+
+        app = app.route(&path, get(move || async move { content.to_string() }));
+    }
 
     let parsed_address: SocketAddr = addr
         .parse()

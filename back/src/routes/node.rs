@@ -2,10 +2,10 @@ use serde_json::json;
 
 use crate::connector::routes::{RequestType, Route};
 
-pub fn root() -> Route {
+pub fn node() -> Route {
     Route {
-        path: String::from("/"),
+        path: String::from("/node"),
         action: RequestType::GET,
-        content: json!({}),
+        content: json!({"test": "test"}),
     }
 }
