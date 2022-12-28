@@ -6,6 +6,11 @@ pub fn root() -> Route {
     Route {
         path: String::from("/"),
         action: RequestType::GET,
-        content: json!({}),
+        content: exec,
     }
+}
+
+fn exec() -> String {
+    println!("root exec");
+    json!({"root": "root"}).to_string()
 }

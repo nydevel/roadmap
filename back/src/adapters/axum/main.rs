@@ -9,7 +9,7 @@ pub async fn run(addr: String, routes: Routes) {
     for route in routes {
         let Route { path, content, .. } = route;
 
-        app = app.route(&path, get(move || async move { content.to_string() }));
+        app = app.route(&path, get(move || async move { (content)() }));
     }
 
     let parsed_address: SocketAddr = addr
