@@ -6,7 +6,7 @@ pub fn root() -> Route {
     Route {
         path: String::from("/"),
         action: RequestType::GET,
-        content: exec,
+        exec,
     }
 }
 

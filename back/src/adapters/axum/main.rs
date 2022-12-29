@@ -7,9 +7,9 @@ pub async fn run(addr: String, routes: Routes) {
     let mut app = Router::new();
 
     for route in routes {
-        let Route { path, content, .. } = route;
+        let Route { path, exec, .. } = route;
 
-        app = app.route(&path, get(move || async move { (content)() }));
+        app = app.route(&path, get(move || async move { (exec)() }));
     }
 
     let parsed_address: SocketAddr = addr
