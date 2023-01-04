@@ -4,9 +4,22 @@ Skills roadmap.
 It's like midnmap, but with interface for data attachments (articles, links, video) for learning + data status (to read, done etc.)
 So, you can build your wished skills roadmap and attach resources required for learning.
 
-# Tech-stack
+## Tech-stack
 Back + front
 Rust lang only:)
 
-# Schemas
+## Schemas
 https://miro.com/app/board/uXjVP3DP4Gc=
+
+## Preinstall requirements
+1. Install Rust
+2. Install sqlx-cli fro migrations
+```bash
+cargo install sqlx-cli --no-default-features --features postgres
+```
+3. Copy .env.example to .env file
+4. Install docker
+5. Run docker compose
+```bash
+docker compose up -d
+```
