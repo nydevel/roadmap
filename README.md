@@ -28,7 +28,11 @@ cargo install sqlx-cli --no-default-features --features rustls,postgres
 ```bash
 docker compose up -d
 ```
-6. SQLX DB create
+6. SQLX DB create (on new host)
 ```bash
 sqlx database create
+```
+7. SQLX migrations
+```bash
+sqlx migrate run
 ```
