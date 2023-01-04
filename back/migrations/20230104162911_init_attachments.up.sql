@@ -1,0 +1,1 @@
+CREATE TABLE attachments (node_id int, done boolean, content text)

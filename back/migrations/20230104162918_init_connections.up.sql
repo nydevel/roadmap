@@ -1,0 +1,1 @@
+CREATE TABLE connections (source int, target int)

@@ -1,2 +1,1 @@
--- Add up migration script here
-CREATE TABLE test (title text)
+CREATE TABLE nodes (node_id int, title text, description text, is_done boolean, x int, y int)
