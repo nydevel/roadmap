@@ -18,5 +18,6 @@ async fn main() {
     let routes_list = vec![routes::root(), routes::node()];
 
     let connection = connector::db::init(&database_url).await;
+
     connector::server::run(addr, routes_list).await;
 }
