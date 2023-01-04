@@ -12,6 +12,11 @@ Rust lang only:)
 https://miro.com/app/board/uXjVP3DP4Gc=
 
 ## Preinstall requirements
+For Debian:
+```bash
+sudo apt install build-essential
+```
+
 1. Install Rust
 2. Install sqlx-cli fro migrations
 ```bash
