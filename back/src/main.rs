@@ -1,5 +1,4 @@
 use dotenv::dotenv;
-use sqlx::postgres::PgPoolOptions;
 use std::env;
 
 mod adapters;
